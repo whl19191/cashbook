@@ -1,10 +1,13 @@
 # cashbook
 
 > A Vue.js project
+[预览](https://whl19191.github.io/cashbook/dist)
 
 ## Build Setup
 
 ``` bash
+
+git clone git@github.com:whl19191/cashbook.git
 # install dependencies
 npm install
 
