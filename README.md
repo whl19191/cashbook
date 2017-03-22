@@ -1,7 +1,8 @@
 # cashbook
 
 > A Vue.js project
-[预览](https://whl19191.github.io/cashbook/dist)
+
+[Demo](https://whl19191.github.io/cashbook/dist)
 
 ## Build Setup
 
