@@ -2,8 +2,9 @@
 
 > A Vue.js project
 
-最简单版本，只有基础功能
-[Demo](https://whl19191.github.io/cashbook/dist)
+最简单版本，只有基础功能( vue2.0 + vuex2.0 + webpack2.0)
+
+预览[Demo](https://whl19191.github.io/cashbook/dist)
 
 以后要添加：
 
