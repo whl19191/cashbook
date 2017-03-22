@@ -13,7 +13,7 @@
      state.count++;
      obj.id = state.count;
      obj.time = getDate();
-    // obj.time = '2017-3-20';
+    // obj.time = '2017-3-20'; //通过修改obj.time来修改新添加的记录日期，文件在/src/store/index.js里的mutations
      state.allList.unshift(obj);
      localStorage.setItem('test',JSON.stringify(state.allList));
      localStorage.setItem('count',JSON.stringify(obj.id));
