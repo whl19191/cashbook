@@ -1,0 +1,67 @@
+$bg:#db4c3f;
+$bg_hover:#b54136;
+
+@mixin theme($bg, $bg_hover){
+    header {
+        background: $bg;
+    }
+    .event-tools{
+        .tools-btn{
+            border:1px solid $bg;
+            background: $bg;
+            &:hover{
+                background: $bg_hover;
+            }
+        }
+    }
+    .event-add{
+        .n-input:focus {
+            border-color: $bg;
+        }
+        .add-btn{
+            border:1px solid $bg;
+            background: $bg;
+            &:hover{
+                background: $bg_hover;
+            }
+        }
+    }
+    .event-content {
+        .event-tab {
+            background: $bg;
+        }
+        .event-box{
+            .event-list{
+                .cancel-btn:hover{
+                    border: 1px solid $bg;
+                    color: $bg;
+                }
+            }
+        }
+    }
+    .event-all{
+        .table-box{
+            .edit-input,.event-table{
+                button{
+                    background: $bg;
+                }
+            }
+        }
+    }
+    .dialog{
+        .dialog-btns {
+            .sure-btn{
+                border: 1px solid $bg;
+                background: $bg;
+                &:hover {
+                    background: $bg_hover;
+                }
+            }
+        }
+    }
+}
+
+//蓝色主题
+.blue{
+    @include theme(#{$bg},#{$bg_hover})
+}

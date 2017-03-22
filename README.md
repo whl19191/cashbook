@@ -1,4 +1,4 @@
-# vue-demo2
+# cashbook
 
 > A Vue.js project
 
