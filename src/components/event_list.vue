@@ -18,7 +18,7 @@
                         </li>
                     </ul>
                 </el-collapse-item>
-                <el-collapse-item title="历史花销" name="2">
+                <el-collapse-item title="历史花销" name="2" v-if="otherList.length">
                      <ul >
                         <li class="event-list" v-for="item in otherList">
                             <input type="text" class="edit">
@@ -102,25 +102,11 @@
                 left: 1px solid #eee;
                 right: 1px solid #eee;
             }
-            .el-collapse-item__wrap{
-                transition: all .5s;
+            .el-collapse-item__content{
+                padding:0;
             }
-
-            ul{
-                display:block;
-                // height:auto;
-                transition: all 1s ease-in;
-                &.move-enter-active{
-                    animation: move-in 1s;
-                }
-                &.move-leave-active{
-                    animation: move-out 1s;
-                }
-                &.close-ul{
-                    display: none;
-                    height:0px;
-                }
-
+            .el-collapse-item__wrap{
+                background:#fff;
             }
             .event-list {
                 position: relative;
@@ -130,13 +116,6 @@
                 box-sizing: border-box;
                 border-bottom: 1px solid #eee;
                 color: #373e40;
-                input[type=checkbox] {
-                    position: absolute;
-                    left: 15px;
-                    top: 12px;
-                    width: 20px;
-                    height: 20px;
-                }
                 .price-type{
                     display: inline-block;
                     width:80px;
