@@ -13,6 +13,7 @@ import nHeader from './components/header.vue';
 import nAdd from './components/event_add.vue';
 import nList from './components/event_list.vue';
 
+
 export default {
   data () {
     return {

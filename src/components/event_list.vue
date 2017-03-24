@@ -1,37 +1,37 @@
 <template>
     <div class="event-content" v-if="allList.length">
-        <div class="event-box" v-if="todayList.length" >
-            <div class="event-tab" @click.self="beforeEnter">
+        <div class="event-box" >
+            <!--<div class="event-tab" @click.self="change(0)">
                 今天
                 <span :class="{'close-span': !collapse[0].show}"></span>
-            </div>
-            <ul :class="{'close-ul': !collapse[0].show}" >
-                <li class="event-list" v-for="item in todayList">
-                    <input type="text" class="edit">
-                    <div class="price">
-                        <span class="price-type">{{item.type}}</span>
-                        <span class="price-num">{{item.num}}元</span>
-                    </div>
-                    <button class="cancel-btn" @click="delList(item)">删除</button>
-                </li>
-            </ul>
-        </div>
-        <div class="event-box" v-if="otherList.length">
-            <div class="event-tab"  @click.self="change(1)">
-                历史花销
-                <span :class="{'close-span': !collapse[1].show}"></span>
-            </div>
-            <ul :class="{'close-ul': !collapse[1].show}">
-                <li class="event-list" v-for="item in otherList">
-                    <input type="text" class="edit">
-                    <div class="price">
-                        <span class="price-type">{{item.type}}</span>
-                        <span class="price-num">{{item.num}}元</span>
-                        <span class="price-time">{{item.time}}</span>
-                    </div>
-                    <button class="cancel-btn" @click="delList(item)">删除</button>
-                </li>
-            </ul>
+            </div>-->
+            <el-collapse v-model="activeNames"  >
+                <el-collapse-item title="今天" name="1" @click='change(0)'>
+                     <ul v-if="todayList.length" >
+                        <li class="event-list" v-for="item in todayList">
+                            <input type="text" class="edit">
+                            <div class="price">
+                                <span class="price-type">{{item.type}}</span>
+                                <span class="price-num">{{item.num}}元</span>
+                            </div>
+                            <button class="cancel-btn" @click="delList(item)">删除</button>
+                        </li>
+                    </ul>
+                </el-collapse-item>
+                <el-collapse-item title="历史花销" name="2">
+                     <ul >
+                        <li class="event-list" v-for="item in otherList">
+                            <input type="text" class="edit">
+                            <div class="price">
+                                <span class="price-type">{{item.type}}</span>
+                                <span class="price-num">{{item.num}}元</span>
+                                <span class="price-time">{{item.time}}</span>
+                            </div>
+                            <button class="cancel-btn" @click="delList(item)">删除</button>
+                        </li>
+                    </ul>
+                </el-collapse-item>
+            </el-collapse>
         </div>
     </div>
     <img src="../assets/zanwu.gif" alt="" v-else width="100%">
@@ -43,12 +43,13 @@
             return {
                 collapse:[
                     {
-                        show: true,
+                        show: false,
                     },
                     {
                         show: false,
                     }
-                ]
+                ],
+                activeNames: ['1']
             }
         },
         computed: {
@@ -70,7 +71,7 @@
 
 <style lang="scss" rel="stylesheet/scss">
     .event-content {
-        .event-tab {
+        .event-tab,.el-collapse-item__header {
             position: relative;
             height: 34px;
             line-height: 34px;
@@ -80,18 +81,14 @@
             box-sizing: border-box;
             color: #fff;
             cursor: pointer;
-            span {
+            span,i {
                 position: absolute;
                 right: 20px;
                 top: 8px;
                 width: 10px;
                 height: 10px;
                 content: '';
-                border: {
-                    top: 2px solid #fff;
-                    right: 2px solid #fff;
-                }
-                transform: rotate(135deg);
+                // transform: rotate(45deg);
                 transition: transform .3s;
                 &.close-span {
                     transform: rotate(45deg);
@@ -105,11 +102,20 @@
                 left: 1px solid #eee;
                 right: 1px solid #eee;
             }
-            transition: height .3s;
+            .el-collapse-item__wrap{
+                transition: all .5s;
+            }
+
             ul{
                 display:block;
-                height:auto;
-                transition: height .3s;
+                // height:auto;
+                transition: all 1s ease-in;
+                &.move-enter-active{
+                    animation: move-in 1s;
+                }
+                &.move-leave-active{
+                    animation: move-out 1s;
+                }
                 &.close-ul{
                     display: none;
                     height:0px;

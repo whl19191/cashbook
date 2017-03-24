@@ -27,7 +27,7 @@ $bg_hover:#b54136;
         }
     }
     .event-content {
-        .event-tab {
+        .event-tab,.el-collapse-item__header {
             background: $bg;
         }
         .event-box{
